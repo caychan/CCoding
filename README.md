@@ -22,3 +22,4 @@
 
 ## tools
 
+- [实现简单LRU Cache](https://github.com/caychan/CCoding/blob/master/tools/%E5%AE%9E%E7%8E%B0LRU%20Cache.md)

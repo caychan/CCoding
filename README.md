@@ -10,9 +10,9 @@
 
 # 目录
 ## MySQL
-   - [单表访问方法](https://github.com/caychan/CCoding/blob/master/mysql/mysql%E5%8D%95%E8%A1%A8%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95.md)
-    - [MVCC](https://github.com/caychan/CCoding/blob/master/mysql/MVCC.md)
-    - [隔离级别](https://github.com/caychan/CCoding/blob/master/mysql/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB.md)
+- [单表访问方法](https://github.com/caychan/CCoding/blob/master/mysql/mysql%E5%8D%95%E8%A1%A8%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95.md)
+- [MVCC](https://github.com/caychan/CCoding/blob/master/mysql/MVCC.md)
+- [隔离级别](https://github.com/caychan/CCoding/blob/master/mysql/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB.md)
 
 
 ## Caffeine

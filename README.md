@@ -3,9 +3,9 @@
 
 - [目录](#目录)
   - [MySQL](#mysql)
+  - [Redis](#redis)
   - [Caffeine](#caffeine)
   - [tools](#tools)
-  - [Redis](#redis)
 <!-- /TOC -->
 
 # 目录

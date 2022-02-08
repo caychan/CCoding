@@ -5,7 +5,7 @@
   - [MySQL](#mysql)
   - [Caffeine](#caffeine)
   - [tools](#tools)
-
+  - [Redis](#redis)
 <!-- /TOC -->
 
 # 目录
@@ -14,8 +14,11 @@
 - [MVCC](https://github.com/caychan/CCoding/blob/master/mysql/MVCC.md)
 - [隔离级别](https://github.com/caychan/CCoding/blob/master/mysql/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB.md)
 
+## Redis
+- [CentOS7.2安装redis6.0.7](https://github.com/caychan/CCoding/blob/master/redis/CentOS7.2%E5%AE%89%E8%A3%85redis6.0.7.md)
 
 ## Caffeine
+- [Caffeine使用](https://github.com/caychan/CCoding/blob/master/caffeine/Caffeine%E4%BD%BF%E7%94%A8.md)
 - [配置方式](https://github.com/caychan/CCoding/blob/master/caffeine/%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F.md)
 - [过期策略](https://github.com/caychan/CCoding/blob/master/caffeine/%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5.md)
 - [FrequencySketch源码解读](https://github.com/caychan/CCoding/blob/master/caffeine/FrequencySketch.md)

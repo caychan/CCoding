@@ -193,7 +193,7 @@ public boolean remove(Object element)
 
 ## 其他方法
 
-`FastList`实现了`List`接口，但并没有将所有方法都实现出来，对HikariCP中用不到的方法直接抛出了`UnsupportedOperationException`，比如：
+`FastList`实现了`List`接口，但并没有将所有方法都实现出来，对HikariCP中用不到的方法直接抛出了`UnsupportedOperationException`
 
 ```
 @Override

@@ -5,6 +5,7 @@
   - [MySQL](#mysql)
   - [Redis](#redis)
   - [Caffeine](#caffeine)
+  - [HikariCP](#hikaricp)
   - [tools](#tools)
 <!-- /TOC -->
 
@@ -24,6 +25,8 @@
 - [FrequencySketch源码解读](https://github.com/caychan/CCoding/blob/master/caffeine/FrequencySketch.md)
 - [TimerWheel源码解读](https://github.com/caychan/CCoding/blob/master/caffeine/TimerWheel%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
 
+## HikariCP
+- [HikariCP源码简洁剖析——FastList](https://github.com/caychan/CCoding/blob/master/HikariCP/FastList.md)
 
 ## tools
 

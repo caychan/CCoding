@@ -28,7 +28,7 @@ HikariCP中实现的一个List，底层基于数组实现，目的是提高List�
 ```java
 public FastList(Class<?> clazz)
    {
-			//默认32个元素
+      //默认32个元素
       this.elementData = (T[]) Array.newInstance(clazz, 32);
       this.clazz = clazz;
    }
@@ -40,7 +40,7 @@ public FastList(Class<?> clazz)
 2. 每次扩容时长度为旧数组的两倍
 
 ```java
-/**
+   /**
     * Add an element to the tail of the FastList.
     *
     * @param element the element to add
@@ -74,9 +74,9 @@ public FastList(Class<?> clazz)
 
 ```java
 public boolean add(E e) {
-		//检查数组空间是否充足，若空间不足，执行扩容操作，新数据是旧数组的1.5倍
+    //检查数组空间是否充足，若空间不足，执行扩容操作，新数据是旧数组的1.5倍
     ensureCapacityInternal(size + 1);  // Increments modCount!!
-		//同样是尾插
+    //同样是尾插
     elementData[size++] = e;
     return true;
 }
@@ -89,7 +89,7 @@ public boolean add(E e) {
 在HikariCP中，`FastList`用于保存Statement和链接，程序可以保证`FastList`的元素不会越界，这样可以省去范围检查的耗时。
 
 ```java
-	 /**
+   /**
     * Get the element at the specified index.
     *
     * @param index the index of the element to get
@@ -106,7 +106,7 @@ public boolean add(E e) {
 
 ```java
 public E get(int index) {
-			//先做范围检查，如果数组越界，抛出IndexOutOfBoundsException
+      //先做范围检查，如果数组越界，抛出IndexOutOfBoundsException
       rangeCheck(index);
 
       return elementData(index);
@@ -139,7 +139,7 @@ public boolean remove(Object element)
 {
    //从后往前遍历
    for (int index = size - 1; index >= 0; index--) {
-			//基于==做比较而不是equals
+      //基于==做比较而不是equals
       if (element == elementData[index]) {
          final int numMoved = size - index - 1;
          if (numMoved > 0) {
@@ -172,7 +172,7 @@ public boolean remove(Object element)
     */
    public boolean remove(Object o) {
       if (o == null) {
-				 //从前向后遍历，找到第一个匹配的数据就结束
+         //从前向后遍历，找到第一个匹配的数据就结束
          for (int index = 0; index < size; index++)
             //null使用==判断
             if (elementData[index] == null) {

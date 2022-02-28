@@ -11,6 +11,8 @@
 
 在Hikari中，HikariDataSource是jdk中`javax.sql.DataSource`的实现类，实现了对数据源的封装，通过`getConnection()`方法对外提供Connection的实例。
 
+同时`HikariDataSource`是`HikariConfig`的子类，`HikariDataSource`的实现依赖了`HikariConfig`的实现。
+
 # 源码剖析
 
 ## 核心变量

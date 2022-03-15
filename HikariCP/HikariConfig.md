@@ -1,6 +1,7 @@
 - [HikariConfig**的作用**](#hikariconfig的作用)
 - [链接池大小](#链接池大小)
 - [各种timeout](#各种timeout)
+- [HikariConfig中的配置](#hikariconfig中的配置)
 
 ## HikariConfig**的作用**
 
@@ -32,3 +33,54 @@ HikariCP中只有两个值来控制连接池的大小：`maxPoolSize`和`minIdle
     - 默认为30s，不能低于250ms
 - `validationTimeout`
     - 默认为5s，不能低于250ms
+
+## HikariConfig中的配置
+
+```java
+   //默认值
+   private static final long CONNECTION_TIMEOUT = SECONDS.toMillis(30);
+   private static final long VALIDATION_TIMEOUT = SECONDS.toMillis(5);
+   private static final long IDLE_TIMEOUT = MINUTES.toMillis(10);
+   private static final long MAX_LIFETIME = MINUTES.toMillis(30);
+   private static final int DEFAULT_POOL_SIZE = 10;
+   
+   // Properties changeable at runtime through the MBean
+   //
+   private volatile long connectionTimeout;
+   private volatile long validationTimeout;
+   private volatile long idleTimeout;
+   private volatile long leakDetectionThreshold;
+   private volatile long maxLifetime;
+   //HikariCP中只有最大链接数和最小链接数两个值，没有max_active等。
+   //而且会默认将maxPoolSize和minIdle设置为相同的值
+   private volatile int maxPoolSize;
+   private volatile int minIdle;
+
+   // Properties NOT changeable at runtime
+   //
+   private long initializationFailTimeout;
+   private String catalog;
+   private String connectionInitSql;
+   private String connectionTestQuery;
+   private String dataSourceClassName;
+   private String dataSourceJndiName;
+   private String driverClassName;
+   private String jdbcUrl;
+   private String password;
+   private String poolName;
+   private String transactionIsolationName;
+   private String username;
+   private boolean isAutoCommit;
+   private boolean isReadOnly;
+   private boolean isIsolateInternalQueries;
+   private boolean isRegisterMbeans;
+   private boolean isAllowPoolSuspension;
+   private DataSource dataSource;
+   private Properties dataSourceProperties;
+   private ThreadFactory threadFactory;
+   private ScheduledExecutorService scheduledExecutor;
+   private MetricsTrackerFactory metricsTrackerFactory;
+   private Object metricRegistry;
+   private Object healthCheckRegistry;
+   private Properties healthCheckProperties;
+```

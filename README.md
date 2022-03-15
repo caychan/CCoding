@@ -29,6 +29,7 @@
 - [HikariCP源码简洁剖析——FastList](https://github.com/caychan/CCoding/blob/master/HikariCP/FastList.md)
 - [HikariCP源码简洁剖析——ConcurrentBag](https://github.com/caychan/CCoding/blob/master/HikariCP/ConcurrentBag.md)
 - [HikariCP源码简洁剖析——HikariDataSource](https://github.com/caychan/CCoding/blob/master/HikariCP/HikariDataSource.md)
+- [HikariCP源码简洁剖析——HikariConfig](https://github.com/caychan/CCoding/blob/master/HikariCP/HikariConfig.md)
 
 ## tools
 

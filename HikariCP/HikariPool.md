@@ -4,6 +4,7 @@
 - [增加链接](#增加链接)
 - [获取链接](#获取链接)
 - [从连接池中驱逐Connection](#从连接池中驱逐connection)
+- [HouseKeeper](#housekeeper)
 
 ## HikariPool的作用
 
@@ -372,3 +373,80 @@ HikariPool就是HikariCP中的`链接池`了，除了自身的创建和关闭等
    }
 ```
 
+## HouseKeeper
+
+1. 清理多余的链接
+2. 新建必要的链接
+
+```Java
+
+   /**
+    * 管家：清理多余的链接，新建必须的链接
+    * The house keeping task to retire and maintain minimum idle connections.
+    */
+   private class HouseKeeper implements Runnable {
+      private volatile long previous = clockSource.plusMillis(clockSource.currentTime(), -HOUSEKEEPING_PERIOD_MS);
+
+      @Override
+      public void run() {
+         try {
+            // refresh timeouts in case they changed via MBean
+            connectionTimeout = config.getConnectionTimeout();
+            validationTimeout = config.getValidationTimeout();
+            leakTask.updateLeakDetectionThreshold(config.getLeakDetectionThreshold());
+
+            final long idleTimeout = config.getIdleTimeout();
+            final long now = clockSource.currentTime();
+
+            // Detect retrograde time, allowing +128ms as per NTP spec.
+            //监测时钟回拨，如果超过128ms，则从头开始重建连接池
+            if (clockSource.plusMillis(now, 128) < clockSource.plusMillis(previous, HOUSEKEEPING_PERIOD_MS)) {
+               LOGGER.warn("{} - Retrograde clock change detected (housekeeper delta={}), soft-evicting connections from pool.",
+                  poolName, clockSource.elapsedDisplayString(previous, now));
+               previous = now;
+               //清理所有STATE_NOT_IN_USE状态的Connection
+               softEvictConnections();
+               //创建新链接
+               fillPool();
+               return;
+            } else if (now > clockSource.plusMillis(previous, (3 * HOUSEKEEPING_PERIOD_MS) / 2)) {
+               // No point evicting for forward clock motion, this merely accelerates connection retirement anyway
+               LOGGER.warn("{} - Thread starvation or clock leap detected (housekeeper delta={}).", poolName, clockSource.elapsedDisplayString(previous, now));
+            }
+
+            previous = now;
+
+            String afterPrefix = "Pool ";
+            if (idleTimeout > 0L) {
+               final List<PoolEntry> idleList = connectionBag.values(STATE_NOT_IN_USE);
+               int removable = idleList.size() - config.getMinimumIdle();
+               if (removable > 0) {
+                  logPoolState("Before cleanup ");
+                  afterPrefix = "After cleanup  ";
+
+                  // Sort pool entries on lastAccessed
+                  //lastAccessed越小越靠前（上次access时间越久）
+                  Collections.sort(idleList, LASTACCESS_COMPARABLE);
+                  //清理超过idleTimeout的链接
+                  for (PoolEntry poolEntry : idleList) {
+                     if (clockSource.elapsedMillis(poolEntry.lastAccessed, now) > idleTimeout && connectionBag.reserve(poolEntry)) {
+                        closeConnection(poolEntry, "(connection has passed idleTimeout)");
+                        if (--removable == 0) {
+                           break; // keep min idle cons
+                        }
+                     }
+                  }
+               }
+            }
+
+            logPoolState(afterPrefix);
+            //创建新链接
+            fillPool(); // Try to maintain minimum connections
+         } catch (Exception e) {
+            LOGGER.error("Unexpected exception in housekeeping task", e);
+         }
+      }
+   }
+```
+
+> github求star：https://github.com/caychan/CCoding

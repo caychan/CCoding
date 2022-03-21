@@ -31,6 +31,7 @@
 - [HikariCP源码简洁剖析——HikariDataSource](https://github.com/caychan/CCoding/blob/master/HikariCP/HikariDataSource.md)
 - [HikariCP源码简洁剖析——HikariConfig](https://github.com/caychan/CCoding/blob/master/HikariCP/HikariConfig.md)
 - [HikariCP源码简洁剖析——PoolBase](https://github.com/caychan/CCoding/blob/master/HikariCP/PoolBase.md)
+- [HikariCP源码简洁剖析——HikariPool](https://github.com/caychan/CCoding/blob/master/HikariCP/HikariPool.md)
 
 ## tools
 

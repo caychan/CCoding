@@ -6,6 +6,7 @@
   - [Redis](#redis)
   - [Caffeine](#caffeine)
   - [HikariCP](#hikaricp)
+  - [rocketmq](#rocketmq)
   - [tools](#tools)
 <!-- /TOC -->
 
@@ -33,6 +34,10 @@
 - [HikariCP源码简洁剖析——PoolBase](https://github.com/caychan/CCoding/blob/master/HikariCP/PoolBase.md)
 - [HikariCP源码简洁剖析——HikariPool](https://github.com/caychan/CCoding/blob/master/HikariCP/HikariPool.md)
 
+## rocketmq
+
+- [rocketmq xmind]()
+- 
 ## tools
 
 - [实现简单LRU Cache](https://github.com/caychan/CCoding/blob/master/tools/%E5%AE%9E%E7%8E%B0LRU%20Cache.md)

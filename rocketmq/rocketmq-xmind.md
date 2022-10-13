@@ -9,6 +9,7 @@
     - [消费过滤](#消费过滤)
     - [消费重试](#消费重试)
 
+> github求star：https://github.com/caychan/CCoding
 
 最近看了下rocketmq官网，整理了一个简单的rocketmq相关知识点的xmind，主要是与生产者和消费者客户端相关。且不涉及底层原理和源码，但可以对rocketmq的使用有一个基本了解。
 
@@ -49,4 +50,3 @@
 > rocketmq官网文档地址：https://rocketmq.apache.org/docs/4.x/
 
 
-> github求star：https://github.com/caychan/CCoding
